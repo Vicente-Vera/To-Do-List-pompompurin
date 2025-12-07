@@ -1,0 +1,496 @@
+/* ===============================
+     Pompompurin Anime Cute To Do List
+=============================== */
+
+/* ------- FONDO Y FUENTES ------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', 'Nunito', Arial, sans-serif;
+    background: linear-gradient(135deg, #fffde6 40%, #ffe7c2 100%);
+    line-height: 1.6;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ------- CONTENEDOR PRINCIPAL ------- */
+.container {
+    max-width: none;
+    width: 100vw;
+    margin: 0;
+    padding: 30px 40px;
+    background: #fffde6;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* ---- ICONOS POMPOMPURIN DECO GRANDES Y DIAGONALES ---- */
+.purin-icon-confrio {
+    position: absolute;
+    top: 0px;
+    left: -30px;
+    width: 350px;
+    height: 350px;
+    opacity: 0.15;
+    pointer-events: none;
+    background: url('pompompurin-stickers/CONfrio.webp') no-repeat center/contain;
+    transform: rotate(-16deg);
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+}
+.purin-icon-durmiendo {
+    position: absolute;
+    top: 500px;
+    right: -60px;
+    width: 350px;
+    height: 350px;
+    opacity: 0.18;
+    pointer-events: none;
+    background: url('pompompurin-stickers/Durmiendo.webp') no-repeat center/contain;
+    transform: rotate(15deg);
+    z-index: 0;
+    animation: float 10s ease-in-out infinite reverse;
+}
+.purin-icon-conlistas {
+    position: absolute;
+    bottom: 10px;
+    left: -40px;
+    width: 350px;
+    height: 350px;
+    opacity: 0.17;
+    pointer-events: none;
+    background: url('pompompurin-stickers/Conlistas.webp') no-repeat center/contain;
+    transform: rotate(-12deg);
+    z-index: 0;
+    animation: float 11s ease-in-out infinite;
+}
+.purin-icon-tomandote {
+    position: absolute;
+    bottom: 0px;
+    right: -35px;
+    width: 350px;
+    height: 350px;
+    opacity: 0.16;
+    pointer-events: none;
+    background: url('pompompurin-stickers/tomandoTe.webp') no-repeat center/contain;
+    transform: rotate(11deg);
+    z-index: 0;
+    animation: float 10s ease-in-out infinite reverse;
+}
+.purin-icon-muralla {
+    position: absolute;
+    top: 40px;
+    left: 80%;
+    transform: translateX(-50%) rotate(-9deg);
+    width: 350px;
+    height: 350px;
+    opacity: 0.14;
+    pointer-events: none;
+    background: url('pompompurin-stickers/muralla.webp') no-repeat center/contain;
+    z-index: 0;
+    animation: float 13s ease-in-out infinite;
+}
+.purin-icon-gatoxd {
+    position: absolute;
+    bottom: 100px;
+    left: 54vw;
+    width: 350px;
+    height: 350px;
+    opacity: 0.14;
+    pointer-events: none;
+    background: url('pompompurin-stickers/con gatoxd.webp') no-repeat center/contain;
+    transform: rotate(18deg);
+    z-index: 0;
+    animation: float 9s ease-in-out infinite reverse;
+}
+
+/* Animación flotante para los iconos */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* ------- TITULO ------- */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #b59f6c;
+    font-family: 'Nunito', 'Quicksand', Arial, sans-serif;
+    font-size: 3em;
+    text-shadow: 0 3px 0 #ffe7c2a6;
+    letter-spacing: 3px;
+    font-weight: 700;
+    line-height: 1.2;
+    padding-top: 20px;
+}
+
+/* ------- INPUT Y BOTON AGREGAR ------- */
+.input-area {
+    display: flex;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    padding: 0 20px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #f6f2af;
+    border-radius: 15px;
+    font-size: 1.2em;
+    background: #fff;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    font-family: 'Quicksand', 'Nunito', Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 60px;
+}
+
+#taskInput:focus {
+    border-color: #f6f2af;
+    outline: none;
+}
+
+#addBtn {
+    padding: 15px 30px;
+    border: none;
+    background: #ffe7c2;
+    color: #6c4b1b;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s, transform 0.08s;
+    position: relative;
+    line-height: 1.4;
+    min-width: 120px;
+    outline: none;
+}
+#addBtn::after {
+    content: '🍮';
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+#addBtn:hover {
+    background: #ffe18d;
+    color: #b59f6c;
+    transform: translateY(-2px);
+}
+
+/* ------- LISTA DE TAREAS: SOLO UNA COLUMNA ------- */
+#taskList {
+    list-style: none;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    display: block;
+}
+
+/* ------- TAREA ------- */
+.task {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 2px solid #ffe7c2;
+    border-radius: 18px;
+    background: #fffde6;
+    font-size: 1.1em;
+    box-shadow: 0 6px 20px rgba(252,213,129,0.09);
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 120px;
+    margin-bottom: 20px;
+}
+.task:hover {
+    box-shadow: 0 10px 30px rgba(230,200,110,0.13);
+    transform: translateY(-5px);
+}
+
+/* ------- CONTENIDO DE TAREA ------- */
+.task-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+/* ------- TEXTO DE TAREA ------- */
+.task-text {
+    flex: 1;
+    word-break: break-word;
+    font-family: 'Quicksand', 'Nunito', Arial, sans-serif;
+    font-size: 1.2em;
+    color: #6c4b1b;
+    line-height: 1.6;
+    padding: 10px 0;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin: 0;
+}
+
+/* ------- BOTONES DE ACCIONES ------- */
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    border-top: 1px dashed #ffe7c2;
+}
+
+/* ------- BOTON ELIMINAR ------- */
+.delete-btn {
+    background: linear-gradient(135deg, #fcd581 0%, #b59f6c 100%);
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    box-shadow: 0 3px 10px rgba(252,213,129,0.11);
+    transition: all 0.2s;
+    line-height: 1.4;
+}
+.delete-btn::after {
+    content: " 🗑️";
+    font-size: 1.1em;
+}
+.delete-btn:hover {
+    background: linear-gradient(135deg, #b59f6c 0%, #fcd581 100%);
+    transform: scale(1.05);
+}
+
+/* ------- BOTONES ADICIONALES ------- */
+.btn-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.btn-group button {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    background: #ffedd6;
+    color: #b59f6c;
+    font-size: 1em;
+    box-shadow: 0 2px 6px rgba(252,213,129,0.07);
+    line-height: 1.4;
+    transition: all 0.2s;
+}
+.btn-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(252,213,129,0.15);
+}
+
+.btn-group .edit-btn {
+    background: #ffe7c2;
+    color: #a67a3c;
+}
+.btn-group .edit-btn::after {
+    content: " ✏️";
+}
+.btn-group .save-btn,
+.btn-group .cancel-btn {
+    background: #fffde6;
+    color: #e3c264;
+}
+.btn-group .save-btn::after {
+    content: " 💾";
+}
+.btn-group .cancel-btn::after {
+    content: " ❌";
+}
+
+/* ------- BOTONES MOVER ------- */
+.btn-group .up-btn, .btn-group .down-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: #fffde6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+.btn-group .up-btn::after {
+    content: "⬆️";
+}
+.btn-group .down-btn::after {
+    content: "⬇️";
+}
+
+/* ------- COMPLETAR TAREA ------- */
+.complete-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #e3c264;
+    background: #ffe7c2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 5px;
+    transition: all 0.2s;
+}
+.complete-btn::after {
+    content: '✔️';
+    font-size: 1.3em;
+    opacity: 0.7;
+}
+.complete-btn:hover {
+    border-color: #b59f6c;
+    background: #ffedd6;
+}
+
+/* ------- TAREA COMPLETADA ------- */
+.completed {
+    opacity: 0.7;
+    background: #fffbf0;
+}
+.completed .task-text {
+    text-decoration: line-through;
+    color: #a67a3c;
+    font-style: italic;
+}
+.completed .complete-btn {
+    background: #fffde6;
+    border-color: #ffe7c2;
+}
+
+/* ------- INPUT DE EDICION ------- */
+.edit-input {
+    font-size: 1.2em;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid #fcd581;
+    font-family: 'Quicksand', 'Nunito', Arial, sans-serif;
+    background: #fffde6;
+    color: #b59f6c;
+    line-height: 1.6;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+/* ------- RESPONSIVE PARA PANTALLAS GRANDES ------- */
+@media (min-width: 1600px) {
+    #taskList {
+        max-width: 1000px;
+    }
+    h1 {
+        font-size: 3.5em;
+    }
+    .task-text {
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 2000px) {
+    #taskList {
+        max-width: 1200px;
+    }
+    .container {
+        padding: 50px 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    h1 {
+        font-size: 2.2em;
+        padding: 0 10px;
+    }
+    .input-area {
+        flex-direction: column;
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+    #taskInput {
+        min-height: 50px;
+        font-size: 1.1em;
+    }
+    #addBtn {
+        width: 100%;
+        min-height: 50px;
+    }
+    #taskList {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    .task {
+        min-height: 100px;
+        padding: 15px;
+    }
+    .task-text {
+        font-size: 1.1em;
+    }
+    
+    /* VERSIÓN MÓVIL PARA ICONOS - MÁS PEQUEÑOS Y DISCRETOS */
+    .purin-icon-confrio,
+    .purin-icon-durmiendo,
+    .purin-icon-conlistas,
+    .purin-icon-tomandote,
+    .purin-icon-muralla,
+    .purin-icon-gatoxd {
+        display: block !important;
+        width: 180px !important;
+        height: 180px !important;
+        opacity: 0.07 !important;
+        animation-duration: 12s !important;
+    }
+    
+    .purin-icon-confrio {
+        top: 30px !important;
+        left: -60px !important;
+        transform: rotate(-10deg) scale(0.7) !important;
+    }
+    
+    .purin-icon-durmiendo {
+        top: auto !important;
+        bottom: 30px !important;
+        right: -60px !important;
+        transform: rotate(8deg) scale(0.7) !important;
+    }
+    
+    .purin-icon-conlistas {
+        bottom: 100px !important;
+        left: -50px !important;
+        transform: rotate(-5deg) scale(0.6) !important;
+    }
+    
+    .purin-icon-tomandote {
+        bottom: 200px !important;
+        right: -40px !important;
+        transform: rotate(5deg) scale(0.6) !important;
+    }
+    
+    .purin-icon-muralla {
+        top: 200px !important;
+        left: 80% !important;
+        transform: translateX(-50%) rotate(-4deg) scale(0.6) !important;
+    }
+    
+    .purin-icon-gatoxd {
+        bottom: 300px !important;
+        left: 70% !important;
+        transform: rotate(10deg) scale(0.6) !important;
+    }
+}

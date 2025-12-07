@@ -9,26 +9,21 @@ Bienvenido/a a **To-Do-List-pompompurin**, una lista de tareas sencilla y tierna
 - Diseño visual inspirado en Pompompurin y colores relajantes
 - Interfaz amigable y minimalista
 
+## 🖥️ Demo online
+
+¿Quieres probar la app directamente? Está desplegada en Cloudflare Pages:
+
+👉 [¡Probar To-Do-List-pompompurin!](https://to-do-list-pompompurin.pages.dev)
+
 ## 🎨 Tecnologías utilizadas
 
 - **CSS** (≈65%): Estilos y animaciones personalizados para el theme kawaii
 - **JavaScript** (≈29%): Lógica para agregar, eliminar y gestionar tareas
 - **HTML** (≈5%): Estructura web clara y accesible
 
-## 🛠 Instalación y uso
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Vicente-Vera/To-Do-List-pompompurin.git
-   ```
-2. Abre el archivo `index.html` en tu navegador favorito.
-3. ¡Listo! Empieza a gestionar tus tareas con alegría.
-
 ## 🖼 Vista previa
 
-> _Puedes incluir una captura de pantalla aquí agregando una imagen `screenshot.png` al proyecto:_
->
-> ![Vista previa de la app](./screenshot.png)
+![Vista previa de la app](<img width="1903" height="941" alt="preview" src="https://github.com/user-attachments/assets/ececc20f-56c3-4727-86ad-9c73ebab61dd" />)
 
 ## ✏️ Autor
 

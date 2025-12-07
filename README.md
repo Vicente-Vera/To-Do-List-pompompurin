@@ -23,7 +23,7 @@ Bienvenido/a a **To-Do-List-pompompurin**, una lista de tareas sencilla y tierna
 
 ## 🖼 Vista previa
 
-![Vista previa de la app](<img width="1903" height="941" alt="preview" src="https://github.com/user-attachments/assets/ececc20f-56c3-4727-86ad-9c73ebab61dd" />)
+![Vista previa de la app](preview.png)
 
 ## ✏️ Autor
 
